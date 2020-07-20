@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="dog"
+            type="com.example.dogs.model.DogBreed" />
+    </data>
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -10,7 +15,7 @@
 
         <ImageView
             android:id="@+id/dogImage"
-            android:src="@drawable/ic_placeholder"
+            android:imageUrl="@{dog.imageUrl}"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
@@ -22,7 +27,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/dogImage"
-            android:text="Dog name"
+            android:text="@{dog.dogBreed}"
             style="@style/title"
             android:layout_centerHorizontal="true"
             android:layout_margin="4dp"/>
@@ -32,7 +37,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/dogName"
-            android:text="Dog purpose"
+            android:text="@{dog.bredFor}"
             style="@style/text"
             android:layout_centerHorizontal="true"
             android:layout_margin="4dp"/>
@@ -42,7 +47,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/dogPurpose"
-            android:text="Dog temperament"
+            android:text="@{dog.temperament}"
             style="@style/text"
             android:layout_centerHorizontal="true"
             android:layout_margin="4dp"/>
@@ -52,7 +57,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/dogTemperament"
-            android:text="Dog lifespan"
+            android:text="@{dog.lifespan}"
             style="@style/text"
             android:layout_centerHorizontal="true"
             android:layout_margin="4dp"/>

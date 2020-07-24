@@ -1,8 +1,11 @@
 package com.example.dogs.view
 
+import android.app.PendingIntent
+import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.drawable.Drawable
 import android.os.Bundle
+import android.telephony.SmsManager
 import android.view.*
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
@@ -102,7 +105,12 @@ class DetailFragment : Fragment() {
             }
 
             R.id.action_share -> {
-
+                val intent = Intent(Intent.ACTION_SEND)
+                intent.type = "text/plain"
+                intent.putExtra(Intent.EXTRA_SUBJECT, "Check out this dog breed")
+                intent.putExtra(Intent.EXTRA_TEXT, "${currentDog?.dogBreed} bred for ${currentDog?.bredFor}")
+                intent.putExtra(Intent.EXTRA_STREAM, currentDog?.imageUrl)
+                startActivity(Intent.createChooser(intent, "Share with"))
             }
         }
 
@@ -142,6 +150,10 @@ class DetailFragment : Fragment() {
     }
 
     private fun sendSms(smsInfo: SMSInfo) {
-
+//        I am hiding this for now since this functionality will send a SMS and it will cost funds
+//        val intent = Intent(context, MainActivity::class.java)
+//        val pi = PendingIntent.getActivity(context, 0, intent, 0)
+//        val sms = SmsManager.getDefault()
+//        sms.sendTextMessage(smsInfo.to, null, smsInfo.text, pi, null)
     }
 }
